@@ -16,13 +16,15 @@ use yii\bootstrap4\Nav;
 
 
 <?php
-NavBar::begin(['brandLabel' => 'NavBar Test']);
+NavBar::begin(['brandLabel' => 'Event Manager Project']);
 echo Nav::widget([
     'items' => [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Login', 'url' => ['/user/login']],
+        ['label' => 'Join', 'url' => ['/user/join']],
     ],
-    'options' => ['class' => 'navbar-nav'],
+    'options' => ['class' => 'navbar-nav ml-auto'],
 ]);
 NavBar::end();
 ?>
