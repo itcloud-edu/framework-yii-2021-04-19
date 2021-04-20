@@ -1,6 +1,14 @@
 {
     "require": {
-        "yiisoft/yii2": "~2.0.14"
+        "yiisoft/yii2": "~2.0.14",
+        "yiisoft/yii2-bootstrap": " *"
+    },
+    "config": {
+        "fxp-asset": {
+            "installer-paths": {
+                "bower-asset-libary": "vendor/bower"
+            }
+        }
     },
     "repositories": [
         {
