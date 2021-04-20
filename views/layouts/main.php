@@ -1,4 +1,7 @@
 <html>
-<h1>Test</h1>
+<head></head>
+<h1>Test 1</h1>
+<body>
 <?= $content ?>
+</body>
 </html>
