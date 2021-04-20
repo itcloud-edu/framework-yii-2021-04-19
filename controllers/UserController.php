@@ -9,6 +9,10 @@ class UserController extends Controller
     {
         return $this -> render('login');
     }
+    public function actionJoin()
+    {
+        return $this -> render('join');
+    }
 
 
 }
