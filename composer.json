@@ -1,6 +1,13 @@
 {
+    "name": "yii/events",
+    "description": "Events",
+    "keywords": ["yii2", "framework", "basic", "project template", "events"],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
     "require": {
-        "yiisoft/yii2": "~2.0.14"
+        "yiisoft/yii2": "~2.0.14",
+        "yiisoft/yii2-bootstrap": " *"
     },
     "repositories": [
         {
