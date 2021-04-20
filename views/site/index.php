@@ -1,1 +1,1 @@
-<h1>Events start</h1>
+<h1>Events Manager Project</h1>
