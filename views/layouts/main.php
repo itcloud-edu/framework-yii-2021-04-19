@@ -29,8 +29,9 @@ echo Nav::widget([
 NavBar::end();
 ?>
 
-
-<?= $content ?>
+<div class="container">
+    <?= $content ?>
+</div>
 
 <?php $this -> endBody() ?>
 </body>
