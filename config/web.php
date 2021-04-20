@@ -1,7 +1,7 @@
 <?php
 
     return [
-        'id' => 'project',
+        'id' => 'Events',
         'basePath' => realpath(__DIR__ . '/../')
     ]
 
