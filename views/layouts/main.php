@@ -12,22 +12,6 @@ use yii\bootstrap4\Nav;
 <?php $this->head() ?>
 </head>
 <body>
-<?php $this-> beginBody() ?>
-
-
-<?php
-NavBar::begin(['brandLabel' => 'NavBar Test']);
-echo Nav::widget([
-    'items' => [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-    ],
-    'options' => ['class' => 'navbar-nav'],
-]);
-NavBar::end();
-?>
-
-
 <?= $content ?>
 
 <?php $this -> endBody() ?>
