@@ -24,6 +24,7 @@ echo Nav::widget([
     'options' => ['class' => 'navbar-nav ml-auto'],
 ]);
 NavBar::end();
+
 ?>
 
 <div class="container">
