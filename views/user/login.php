@@ -17,12 +17,12 @@ echo $form->field($model, 'name', [
         'placeholder' => $model->getAttributeLabel('email'),
     ],
 ])->label(false);
+
 echo $form->field($model, 'email', [
     'inputOptions' => [
         'placeholder' => $model->getAttributeLabel('password'),
     ],
 ])->label(false);
-
 
 echo Button::widget([
     'label' => 'Confirm',
