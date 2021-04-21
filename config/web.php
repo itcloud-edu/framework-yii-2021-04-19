@@ -18,7 +18,6 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-
     'modules' => [
         'debug'=> 'yii\debug\Module'
     ]
