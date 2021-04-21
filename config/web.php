@@ -13,6 +13,7 @@ return [
         'request'=> [
             'cookieValidationKey'=>'DFSDGFSDG'
         ],
+        'db'=> require (__DIR__ .'/db.php')
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
