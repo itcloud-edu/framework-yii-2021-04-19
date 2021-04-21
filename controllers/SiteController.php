@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use yii\web\Controller;
+use yii;
 
 class SiteController extends Controller
 {
