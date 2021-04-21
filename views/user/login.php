@@ -1,6 +1,7 @@
 
 <?php
 use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\Alert;
 use yii\bootstrap4\Button;
 
 class model extends \yii\base\Model{
@@ -26,7 +27,12 @@ echo $form->field($model, 'email', [
 
 echo Button::widget([
     'label' => 'Confirm',
-    'options' => ['class' => 'btn-lg'],
+    'options' => ['class' => 'btn btn-primary'],
 ]);
 
-
+echo Alert::widget([
+    'options' => [
+        'class' => 'alert-info',
+    ],
+    'body' => 'Say hello...',
+]);
