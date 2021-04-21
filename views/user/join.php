@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\Button;
 
 class Model extends \yii\base\Model {
     public $name;
@@ -39,7 +40,11 @@ echo $form->field($user, 'password', [
     ],
 ])->label(false);
 
-echo Html::submitButton('join') ;
+//echo Html::submitButton('join') ;
 
+echo Button::widget([
+    'label' => 'login',
+    'options' => ['class' => 'btn-primary btn-lg'],
+]);
 
 ActiveForm::end();
