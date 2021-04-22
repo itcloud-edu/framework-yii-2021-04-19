@@ -17,11 +17,16 @@ class UserJoinForm extends Model{
             ['email', 'email',],
             ['password', 'string', 'min'=>8, 'max' => 30 ],
             ['password', 'compare', 'compareAttribute' => 'password2' ],
+            ['email', 'errorIsEmailUser']
         ];
     }
     public function setUserRecord($userRecord){
         $this->name = $userRecord->name;
         $this->email = $userRecord->email;
         $this->password = $this->password2 = '123456789';
+    }
+    public function errorIsEmailUser(){
+        if (UserRecord::existByEmail($this->email))
+            $this->addError('email', 'Такой  email существует');
     }
 }

@@ -14,4 +14,7 @@ class UserRecord extends  ActiveRecord{
         $this->email = $faker->email;
         $this->passhash = $faker->city;
     }
+    public static function  existByEmail($email){
+        return  static::find()->where(['email'=> $email])->count()>0;
+    }
 }
