@@ -12,7 +12,7 @@ use yii\bootstrap4\Html;
         $form = ActiveForm::begin(['id' => 'user-login']);
         echo $form->field($userLoginForm, 'email');
         echo $form->field($userLoginForm, 'password')->passwordInput();
-        echo Html::submitButton('Login', ['class' => 'btn btn-warning']);
+        echo Html::submitButton('Login', ['class' => 'btn btn-primary']);
         ActiveForm::end();
         ?>
     </div>

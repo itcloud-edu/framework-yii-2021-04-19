@@ -20,6 +20,10 @@ class UserRecord extends ActiveRecord{
         return static::find()->where(['email' => $email]) -> count() > 0;
     }
 
+    public static function findUserByEmail($email){
+        return static::findOne(['email' => $email]);
+    }
+
     public function setUserJoinForm($userJoinForm){
         $this->name = $userJoinForm->name;
         $this->email = $userJoinForm->email;

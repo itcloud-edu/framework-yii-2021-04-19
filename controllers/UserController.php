@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use app\models\UserLoginForm;
+use app\models\UserJoinForm;
 use yii;
 use app\models\UserIdentity;
 use app\models\UserRecord;
@@ -15,14 +16,11 @@ class UserController extends Controller
         //$uid = UserIdentity::findIdentity(1);
         //Yii::$app->user->login($uid);
 
-        //if (Yii::$app->request->isPost) return $this->actionJoinPost();
+        if (Yii::$app->request->isPost) return $this->actionLoginPost();
 
         $userLoginForm = new UserLoginForm();
 
-        return $this -> render('login',
-            [
-                'userLoginForm' => $userLoginForm
-            ]);
+        return $this -> render('login', compact('userLoginForm'));
 
     }
 
@@ -72,6 +70,18 @@ class UserController extends Controller
             }
 
         return $this -> render('join', compact('userJoinForm')); //другой способ
+    }
+
+    public function actionLoginPost(){
+        $userLoginForm = new UserLoginForm();
+        if ($userLoginForm->load(Yii::$app->request->post()))
+            if ($userLoginForm->validate()){
+                $userLoginForm->Login();
+                return $this->redirect('/');
+            }
+
+        return $this -> render('join', compact('userLoginForm'));
+
     }
 }
 
