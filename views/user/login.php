@@ -1,38 +1,22 @@
 <?php
-use yii\helpers\Html;
+use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Button;
+//use yii\widgets\ActiveForm;
 
-
-class Model extends \yii\base\Model {
-    public $name;
-    public $email;
-    public $password;
-};
 ?>
-    <h1><?= Html::encode('login') ?></h1>
-<?php
-$form  = ActiveForm::begin(['layout' => 'horizontal']);
-$user = new Model();
+<div class="card">
+    <div class="card-header bg-"><h1>Login Form</h1></div>
+    <div class="card-body">
+        <?php
 
-echo $form->field($user, 'name', [
-    'inputOptions' => [
-        'placeholder' => $user->getAttributeLabel('name'),
-    ],
-])->label(false);
+        $form2 = ActiveForm::begin(['id' => 'user-login',]);
+        echo $form2->field($userLoginForm, 'email');
+        echo $form2->field($userLoginForm, 'password')->passwordInput();
+        echo Html::submitButton('Create', ['class' => 'btn btn-lg']);
+        ActiveForm::end();
 
-echo $form->field($user, 'password', [
-    'inputOptions' => [
-        'placeholder' => $user->getAttributeLabel('password'),
-    ],
-])->label(false);
+        ?>
 
-//echo Html::submitButton('Login') ;
-
-echo Button::widget([
-    'label' => 'login',
-    'options' => ['class' => 'btn-primary btn-lg'],
-]);
-
-ActiveForm::end();
-
+    </div>
+</div>

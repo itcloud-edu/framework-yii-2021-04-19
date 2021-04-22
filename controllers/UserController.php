@@ -3,6 +3,7 @@
 
 namespace app\controllers;
 use app\models\UserJoinForm;
+use app\models\UserLoginForm;
 use app\models\UserRecord;
 use yii\web\Controller;
 use app\models\UserIdentity;
@@ -16,9 +17,13 @@ class UserController extends Controller
     }
     public function actionLogin()
     {
-        $uid = UserIdentity::findIdentity(4);
-        Yii::$app->user->login($uid);
-        return $this -> render('login');
+       // $uid = UserIdentity::findIdentity(4);
+       // Yii::$app->user->login($uid);
+       if(Yii::$app->request->isPost)
+            return $this->actionLoginPost();
+        $userLoginForm = new UserLoginForm();
+        //$userLoginForm->setUserRecord($userRecord);
+        return $this->render('login', compact('userLoginForm'));
     }
     public function actionJoin()
     {
@@ -34,10 +39,23 @@ class UserController extends Controller
     }
     public function actionJoinPost(){
         $userJoinForm = new UserJoinForm();
-        $userJoinForm->load(Yii::$app->request->post());
-        if ($userJoinForm->validate()) $userJoinForm->name . '.!.';
+        if($userJoinForm->load(Yii::$app->request->post()))
+            if ($userJoinForm->validate()) {
+                $userRecord = new UserRecord();
+                $userRecord->setUserJoinForm($userJoinForm);
+                $userRecord->save();
+                return $this->redirect('/user/login');
+            }
         return $this->render('join', compact('userJoinForm'));
     }
 
-
+    public function actionLoginPost(){
+        $userLoginForm = new UserLoginForm();
+        if($userLoginForm->load(Yii::$app->request->post()))
+            if ($userLoginForm->validate()) {
+               $userLoginForm->login();
+               // return $this->redirect('/');
+            }
+        return $this->render('login', compact('userLoginForm'));
+    }
 }

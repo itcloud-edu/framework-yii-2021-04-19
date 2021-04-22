@@ -21,8 +21,8 @@ class UserJoinForm extends Model{
         ];
     }
     public function setUserRecord($userRecord){
-        $this->name = $userRecord->name;
-        $this->email = $userRecord->email;
+        $this->name     = $userRecord->name;
+        $this->email    = $userRecord->email;
         $this->password = $this->password2 = '123456789';
     }
     public function errorIsEmailUser(){
