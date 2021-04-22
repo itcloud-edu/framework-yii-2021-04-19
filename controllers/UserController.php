@@ -11,8 +11,8 @@ class UserController extends Controller
 {
     public function actionLogin()
     {
-        $uid = UserIdentity::findIdentity(mt_rand(1,13));
-        Yii::$app->user->login($uid);
+//        $uid = UserIdentity::findIdentity(mt_rand(1,13));
+//        Yii::$app->user->login($uid);
         return $this -> render('login');
     }
     public function actionLogout()
@@ -36,7 +36,13 @@ class UserController extends Controller
     public function actionJoinPost()
     {
         $userJoinForm = new UserJoinForm();
-        $userJoinForm->load(Yii::$app->request->post());
+        if ($userJoinForm->load(Yii::$app->request->post()))
+            if ($userJoinForm->validate()) {
+                $userRecord = new UserRecord();
+                $userRecord->setUserJoinForm($userJoinForm);
+                $userRecord->save();
+                return $this -> redirect('/user/login');
+            }
         return $this -> render('join', compact('userJoinForm'));
     }
 
