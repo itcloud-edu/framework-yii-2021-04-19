@@ -2,6 +2,7 @@
 
 
 namespace app\controllers;
+use app\models\UserJoinForm;
 use app\models\UserRecord;
 use yii\web\Controller;
 use app\models\UserIdentity;
@@ -25,8 +26,9 @@ class UserController extends Controller
        // $userRec = new UserRecord();
        // $userRec->setTestUser();
        // $userRec->save();
-
-        return $this -> render('join');
+        $userJoinForm = new UserJoinForm();
+        $userJoinForm->name = 'jon';
+        return $this -> render('join', compact('userJoinForm'));
     }
 
 

@@ -39,7 +39,7 @@ NavBar::end();
 ?>
 
 <div class="container">
-    <?= $content ?>
+    <?= $content; ?>
 </div>
 
 <?php $this -> endBody() ?>

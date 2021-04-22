@@ -3,42 +3,39 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Button;
 
-class Model extends \yii\base\Model {
-    public $name;
-    public $email;
-    public $company;
-    public $password;
-};
+
+
 ?>
-    <h1><?= Html::encode('Registration') ?></h1>
+<div class="card">
+<div class="card-header bg-light"><h1>Join us</h1></div>
+<div class="card-body">
 <?php
-$form  = ActiveForm::begin(['layout' => 'horizontal']);
-$user = new Model();
+/*
+$form  = ActiveForm::begin([
+        'id' => 'user=join',
+        'layout' => 'horizontal']);
+//$user = new UserJoinForm();
 
-echo $form->field($user, 'name', [
+echo $form->field($userJoinForm, 'name', [
     'inputOptions' => [
-        'placeholder' => $user->getAttributeLabel('name'),
+        'placeholder' => $userJoinForm->getAttributeLabel('name'),
     ],
 ])->label(false);
 
-echo $form->field($user, 'email', [
+echo $form->field($userJoinForm, 'email', [
     'inputOptions' => [
-        'placeholder' => $user->getAttributeLabel('email'),
+        'placeholder' => $userJoinForm->getAttributeLabel('email'),
     ],
 ])->label(false);
 
-echo $form->field($user, 'company', [
+echo $form->field($userJoinForm, 'password', [
     'inputOptions' => [
-        'placeholder' => $user->getAttributeLabel('company'),
+        'placeholder' => $userJoinForm->getAttributeLabel('password'),
     ],
 ])->label(false);
 
 
-echo $form->field($user, 'password', [
-    'inputOptions' => [
-        'placeholder' => $user->getAttributeLabel('password'),
-    ],
-])->label(false);
+
 
 //echo Html::submitButton('join') ;
 
@@ -47,4 +44,17 @@ echo Button::widget([
     'options' => ['class' => 'btn-primary btn-lg'],
 ]);
 
-ActiveForm::end();
+ActiveForm::end(); */
+
+$form2 = \yii\widgets\ActiveForm::begin(['id' => 'user=join',]);
+echo $form2->field($userJoinForm, 'name');
+echo $form2->field($userJoinForm, 'email');
+echo $form2->field($userJoinForm, 'password');
+echo $form2->field($userJoinForm, 'password2');
+echo Html::submitButton('Join', ['class' => 'btn btn-lg']);
+\yii\widgets\ActiveForm::end();
+
+?>
+
+</div>
+</div>
