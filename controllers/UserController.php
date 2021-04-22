@@ -80,7 +80,7 @@ class UserController extends Controller
                 return $this->redirect('/');
             }
 
-        return $this -> render('join', compact('userLoginForm'));
+        return $this -> render('login', compact('userLoginForm'));
 
     }
 }
