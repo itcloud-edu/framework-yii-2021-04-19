@@ -1,38 +1,22 @@
-
 <?php
+
+use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
-use yii\bootstrap4\Alert;
-use yii\bootstrap4\Button;
-
-class model extends \yii\base\Model{
-    public $name;
-    public $email;
-}
+?>
 
 
-$form = ActiveForm::begin(['layout' => 'horizontal']);
-$model = new Model;
+<div class="card mt-5">
+    <div class="card-header">
+        <h1>Login</h1>
+    </div>
+    <div class="card-body">
+        <?php
 
-echo $form->field($model, 'name', [
-    'inputOptions' => [
-        'placeholder' => $model->getAttributeLabel('email'),
-    ],
-])->label(false);
-echo $form->field($model, 'email', [
-    'inputOptions' => [
-        'placeholder' => $model->getAttributeLabel('password'),
-    ],
-])->label(false);
-
-
-echo Button::widget([
-    'label' => 'Confirm',
-    'options' => ['class' => 'btn btn-primary'],
-]);
-
-echo Alert::widget([
-    'options' => [
-        'class' => 'alert-info',
-    ],
-    'body' => 'Say hello...',
-]);
+        $form = ActiveForm::begin(['id' => 'user-login']);
+        echo $form->field($userLoginForm, 'email')->input('email');
+        echo $form->field($userLoginForm, 'password')->passwordInput();
+        echo Html::submitButton('Login', ['class'=> 'btn btn-primary']);
+        ActiveForm::end();
+        ?>
+    </div>
+</div>

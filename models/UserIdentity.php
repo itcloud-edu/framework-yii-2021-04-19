@@ -1,21 +1,26 @@
 <?php
 
-use app\modules\UserRecord;
+namespace app\models;
+
+use app\models\UserRecord;
 use yii\web\IdentityInterface;
 
-class UserIdentity extends UserRecord implements  IdentityInterfacepublic static function findIdentity($id)
+class UserIdentity extends UserRecord implements IdentityInterface
 {
-    // TODO: Implement findIdentity() method.
-}
+
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-       static::findOne($id);
+        // TODO: Implement findIdentityByAccessToken() method.
     }
 
     public function getId()
     {
-        // TODO: Implement getId() method.
+        return $this->id;
     }
 
     public function getAuthKey()
@@ -27,3 +32,4 @@ class UserIdentity extends UserRecord implements  IdentityInterfacepublic static
     {
         // TODO: Implement validateAuthKey() method.
     }
+}
