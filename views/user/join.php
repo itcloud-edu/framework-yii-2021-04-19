@@ -12,11 +12,9 @@ use yii\widgets\ActiveForm;
     <div class="card-body">
 <?php
 
-
-
 $form = ActiveForm::begin(['id' => 'user-join']);
     echo $form->field($userJoinForm, 'name');
-    echo $form->field($userJoinForm, 'email');
+    echo $form->field($userJoinForm, 'email')->input('email');
     echo $form->field($userJoinForm, 'password')->passwordInput();
     echo $form->field($userJoinForm, 'password2')->passwordInput();
     echo Html::submitButton('Create', ['class'=> 'btn btn-warning']);
