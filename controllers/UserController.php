@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use app\models\UserJoinForm;
 use yii;
 use app\models\UserIdentity;
 use app\models\UserRecord;
@@ -27,10 +28,20 @@ class UserController extends Controller
         //$userRec->setTestUser();
         //$userRec->save();
 
-        return $this -> render('join');
+        $userJoinForm = new UserJoinForm();
+        //$userJoinForm->name = 'Join'; // автозаполнение
+        return $this -> render('join',
+        [
+            'userJoinForm' => $userJoinForm
+        ]);
+        //return $this -> render('join', compact('userJoinForm'); //другой способ
+
     }
 
-
+    public function actionInfo()
+    {
+        return $this -> render('info');
+    }
 }
 
 
