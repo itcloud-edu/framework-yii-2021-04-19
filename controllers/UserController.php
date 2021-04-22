@@ -1,22 +1,30 @@
 <?php
 
+
 namespace app\controllers;
-use app\models\UserRec;
+use app\models\UserRecord;
 use yii\web\Controller;
+use app\models\UserIdentity;
+use yii;
 
 class UserController extends Controller
 {
+    public function actionLogout(){
+        Yii::$app->user->logout();
+        return $this->redirect('/');
+    }
     public function actionLogin()
     {
-
+        $uid = UserIdentity::findIdentity(4);
+        Yii::$app->user->login($uid);
         return $this -> render('login');
     }
     public function actionJoin()
     {
 
-        $userRec = new UserRec();
-        $userRec->setTestUser();
-        $userRec->save();
+       // $userRec = new UserRecord();
+       // $userRec->setTestUser();
+       // $userRec->save();
 
         return $this -> render('join');
     }
