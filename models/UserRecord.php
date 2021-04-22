@@ -11,6 +11,8 @@ class UserRecord extends ActiveRecord{
         return "user";
     }
 
+
+
     public function setTestUser(){
         $faker = \Faker\Factory::create();
         $this->name = $faker-> name;
@@ -20,6 +22,12 @@ class UserRecord extends ActiveRecord{
 
     public static function existEmail($email){
         return static::find()->where(['email'=>$email])->count() > 0;
+    }
+
+
+    public static function findUserByEmail($email)
+    {
+        return static::findOne(['email'=>$email]);
     }
 
     public function setUserJoinForm($userJoinForm)
