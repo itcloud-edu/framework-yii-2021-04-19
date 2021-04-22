@@ -1,20 +1,29 @@
 <?php
 
 namespace app\controllers;
-use app\models\UserJoinForm;
+use app\models\UserLoginForm;
 use yii;
 use app\models\UserIdentity;
 use app\models\UserRecord;
+use yii\base\BaseObject;
 use yii\web\Controller;
 
 class UserController extends Controller
 {
     public function actionLogin()
     {
-        $uid = UserIdentity::findIdentity(1);
-        Yii::$app->user->login($uid);
+        //$uid = UserIdentity::findIdentity(1);
+        //Yii::$app->user->login($uid);
 
-        return $this -> render('login');
+        //if (Yii::$app->request->isPost) return $this->actionJoinPost();
+
+        $userLoginForm = new UserLoginForm();
+
+        return $this -> render('login',
+            [
+                'userLoginForm' => $userLoginForm
+            ]);
+
     }
 
     public function actionLogout(){
