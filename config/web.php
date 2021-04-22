@@ -2,7 +2,7 @@
 return [
     'id'=>'Events Manager',
     'basePath'=> realpath(__DIR__ . '/../'),
-    'bootstrap' =>[
+    'bootstrap' => [
         'debug'
     ],
     'components'=> [
@@ -11,17 +11,19 @@ return [
             'showScriptName' => false
         ],
         'request'=> [
-            'cookieValidationKey'=>'DFSDGFSDG'
+            'cookieValidationKey'=>'FKSJFKSFJSLKFJLSDKFJSDLKJFSLDK'
         ],
-        'db'=> require (__DIR__ .'/db.php')
+        'db'=> require (__DIR__ . '/db.php'),
+        'user'=>[
+            'identityClass'=>'app\models\UserIdentity'
+        ]
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-
     'modules' => [
-        'debug' => 'yii\debug\Module',
+        'debug'=> 'yii\debug\Module'
     ]
 
 ];

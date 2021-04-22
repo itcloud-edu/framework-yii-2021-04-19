@@ -6,7 +6,7 @@ use yii\bootstrap4\ActiveForm;
 
 
 <div class="card mt-5">
-    <div class="card-header">
+    <div class="card-header bg-primary text-light">
         <h1>Login</h1>
     </div>
     <div class="card-body">

@@ -10,7 +10,7 @@ class UserIdentity extends UserRecord implements IdentityInterface
 
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+       return static::findOne($id);
     }
 
     public static function findIdentityByAccessToken($token, $type = null)
@@ -20,7 +20,7 @@ class UserIdentity extends UserRecord implements IdentityInterface
 
     public function getId()
     {
-        return $this->id;
+       return $this->id;
     }
 
     public function getAuthKey()
