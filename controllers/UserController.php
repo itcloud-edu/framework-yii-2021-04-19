@@ -30,7 +30,7 @@ class UserController extends Controller
 
         // нажали Commit и возвращается сюда
         // чтобы перерисовки ниже не было проверяем запрос Post
-        if (Yii::$app->request->isPost) return $this->actionPost();
+        if (Yii::$app->request->isPost) return $this->actionJoinPost();
 
         $userJoinForm = new UserJoinForm();
         $userRecord = new UserRecord();
@@ -52,10 +52,11 @@ class UserController extends Controller
         return $this -> render('info');
     }
 
-    public function actionPost(){
+    public function actionJoinPost(){
         $userJoinForm = new UserJoinForm();
         $userJoinForm->load(Yii::$app->request->post());
-        $userJoinForm->name = "mmmmmmmm";
+        if ($userJoinForm->validate()) $userJoinForm->name .= '!';
+
         return $this -> render('join', compact('userJoinForm')); //другой способ
     }
 }
