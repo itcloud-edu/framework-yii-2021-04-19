@@ -17,6 +17,12 @@ class UserRecord extends ActiveRecord{
     }
 
     public static function existEmail($email){
-        return static::find()->where(['email' => $this->email]) -> count() > 0;
+        return static::find()->where(['email' => $email]) -> count() > 0;
+    }
+
+    public function setUserJoinForm($userJoinForm){
+        $this->name = $userJoinForm->name;
+        $this->email = $userJoinForm->email;
+        $this->passhash = $userJoinForm->password;
     }
 }
