@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-use app\models\UserRec;
+use app\models\UserRecord;
 use yii\web\Controller;
 
 class UserController extends Controller
@@ -12,9 +12,9 @@ class UserController extends Controller
     }
     public function actionJoin()
     {
-        $userRec = new UserRec();
-        $userRec->setTestUser();
-        $userRec->save();
+        $userRecord = new UserRecord();
+        $userRecord->setTestUser();
+        $userRecord->save();
 
         return $this -> render('join');
     }
