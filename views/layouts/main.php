@@ -35,6 +35,7 @@ echo Button::widget([
     'options' => ['class' => 'btn btn-primary'],
 ]);
 NavBar::end();
+
 ?>
 
 <div class="container">
