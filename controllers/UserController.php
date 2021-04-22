@@ -1,7 +1,9 @@
 <?php
 
 namespace app\controllers;
-use app\models\UserRec;
+use yii;
+use app\models\UserIdentity;
+use app\models\UserRecord;
 use yii\web\Controller;
 
 class UserController extends Controller
@@ -12,10 +14,13 @@ class UserController extends Controller
     }
     public function actionJoin()
     {
-        $userRec = new UserRec();
-        $userRec->setTestUser();
-        $userRec->save();
 
+
+//        $userRecord = new UserRecord();
+//        $userRecord->setTestUser();
+//        $userRecord->save();
+        $uid = UserIdentity::findIdentity(12);
+        Yii::$app->user->login($uid);
         return $this -> render('join');
     }
 

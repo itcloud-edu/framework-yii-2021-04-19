@@ -4,7 +4,7 @@ namespace app\models;
 use yii\db\ActiveRecord;
 
 
-class UserRec extends ActiveRecord{
+class UserRecord extends ActiveRecord{
 
     public static function tableName()
     {

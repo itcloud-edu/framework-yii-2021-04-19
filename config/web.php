@@ -13,7 +13,10 @@ return [
         'request'=> [
             'cookieValidationKey'=>'FKSJFKSFJSLKFJLSDKFJSDLKJFSLDK'
         ],
-        'db'=> require (__DIR__ . '/db.php')
+        'db'=> require (__DIR__ . '/db.php'),
+        'user'=>[
+            'identityClass'=>'app\models\UserIdentity'
+        ]
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
