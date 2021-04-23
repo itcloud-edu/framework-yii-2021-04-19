@@ -41,9 +41,8 @@ class m210423_052348_place extends Migration
      */
     public function safeDown()
     {
-        echo "m210423_052348_place cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('address');
+        $this->dropTable('place');
     }
 
     /*
