@@ -23,8 +23,9 @@ class SiteController extends Controller
             return $this->actionAddressPost();
 
         $addressForm = new AddressForm();
+        $addressList = AddressRecord::getAddressList();
 
-        return $this->render('address',  compact('addressForm'));
+        return $this->render('address',  compact('addressForm', 'addressList'));
     }
 
     private function actionAddressPost()
@@ -36,12 +37,9 @@ class SiteController extends Controller
                 $addressRecord->setNameForm($addressForm);
                 $addressRecord->save();
             }
-        return $this->render('address',  compact('addressForm'));
+        $addressList = AddressRecord::getAddressList();
+
+        return $this->render('address',  compact('addressForm', 'addressList'));
     }
 
-    public function actionsAddress()
-    {
-        return $this -> render('address', compact('addressForm'));
-
-    }
 }

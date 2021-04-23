@@ -19,6 +19,6 @@ class AddressForm extends Model
 
     public function errorIsAddressNameExist() {
         if (AddressRecord::existName($this->name))
-            $this->addError('email', 'This Address Name already exists');
+            $this->addError('name', 'This Address Name already exists');
     }
 }
