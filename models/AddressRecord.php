@@ -16,7 +16,12 @@ class AddressRecord extends ActiveRecord
 
     public static function existName($name)
     {
-        return static::find()->where(['email'=>$name])->count() > 0;
+        return static::find()->where(['name'=>$name])->count() > 0;
+    }
+
+    public static function getAddressList()
+    {
+        return static::find()->asArray()->all();
     }
 
     public function setNameForm($addressForm)

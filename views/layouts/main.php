@@ -25,6 +25,7 @@ NavBar::begin([
 if (Yii::$app->user->isGuest){
     $menu = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Address', 'url' => ['/site/address']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Login', 'url' => ['/user/login']],
         ['label' => 'Join', 'url' => ['/user/join'] ]
@@ -32,6 +33,7 @@ if (Yii::$app->user->isGuest){
 } else {
     $menu = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Address', 'url' => ['/site/address']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Logout', 'url' => ['/user/logout']],
         ['label' => Yii::$app->user->getIdentity()->name, 'url' => ['/user/info']],

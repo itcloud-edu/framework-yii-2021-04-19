@@ -9,6 +9,13 @@ use yii\bootstrap4\ActiveForm;
         <h1>Address</h1>
     </div>
     <div class="card-body">
+        <?php foreach ($addressList as $address):?>
+            <p><?= $address['name'] ?></p>
+
+        <?php endforeach; ?>
+
+
+
         <?php
         $form = ActiveForm::begin(['id' => 'address-create']);
         echo $form->field($addressForm, 'name');
