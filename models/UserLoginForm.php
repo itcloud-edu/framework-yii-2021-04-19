@@ -1,8 +1,8 @@
 <?php
 
 namespace app\models;
-use yii\base\Model;
 use yii;
+use yii\base\Model;
 
 class UserLoginForm extends Model {
 
@@ -28,15 +28,15 @@ class UserLoginForm extends Model {
     }
 
     public function errorIsPasswordWrong() {
-        if ($this->hasErrors())
+        if ($this->hasError())
             return;
-        if ( $this->userRecord->passhash != $this->password)
+        if ($this->userRecord->validatePassword($this->password))
             $this->addError('password', 'This password is wrong');
     }
 
     public function login()
     {
-        if ($this->hasErrors())
+        if ($this->hasError())
             return;
         $userIdentity = UserIdentity::findIdentity($this->userRecord->id);
         Yii::$app->user->login($userIdentity);

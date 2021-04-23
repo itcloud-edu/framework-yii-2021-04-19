@@ -2,7 +2,7 @@
 
 namespace app\models;
 use yii\db\ActiveRecord;
-
+use yii;
 
 class UserRecord extends ActiveRecord{
 
@@ -25,6 +25,7 @@ class UserRecord extends ActiveRecord{
     }
 
 
+
     public static function findUserByEmail($email)
     {
         return static::findOne(['email'=>$email]);
@@ -34,7 +35,18 @@ class UserRecord extends ActiveRecord{
     {
         $this->name = $userJoinForm->name;
         $this->email = $userJoinForm->email;
-        $this->passhash = $userJoinForm->password;
+        $this->setPassword($userJoinForm->password);
         $this->status = 2;
     }
+
+    public function setPassword($password)
+    {
+        $this->passhash =\Yii::$app->security->generatePasswordHash($password);
+    }
+
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->passhash);
+    }
+
 }
