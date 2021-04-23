@@ -10,7 +10,11 @@ use yii\bootstrap4\ActiveForm;
     </div>
     <div class="card-body">
         <?php foreach ($addressList as $address):?>
-            <p><?= $address['name'] ?></p>
+            <p>
+                <?= $address['name'] ?>
+                <?=Html::a('edit','/site/address?action=update&id=' . $address['id'], ['class'=>'btn btn-primary'])?>
+                <?=Html::a('delete','/site/address?action=delete&id=' . $address['id'], ['class'=>'btn btn-danger'])?>
+            </p>
 
         <?php endforeach; ?>
 

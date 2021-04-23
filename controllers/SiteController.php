@@ -23,6 +23,14 @@ class SiteController extends Controller
             return $this->actionAddressPost();
 
         $addressForm = new AddressForm();
+
+        if (Yii::$app->request->get('action') == 'update' )
+            $addressForm->name = AddressRecord::findOne(Yii::$app->request->get('id'))->name;
+        elseif (Yii::$app->request->get('action') == 'delete'){
+            AddressRecord::findOne(Yii::$app->request->get('id'))->delete();
+                return $this->redirect('/site/address');
+        }
+
         $addressList = AddressRecord::getAddressList();
 
         return $this->render('address',  compact('addressForm', 'addressList'));
@@ -33,7 +41,10 @@ class SiteController extends Controller
         $addressForm = new AddressForm();
         if ($addressForm->load(Yii::$app->request->post()))
             if ($addressForm->validate()) {
-                $addressRecord = new AddressRecord();
+                if (Yii::$app->request->get('id'))
+                    $addressRecord = AddressRecord::findOne(Yii::$app->request->get('id'));
+                else
+                    $addressRecord = new AddressRecord();
                 $addressRecord->setNameForm($addressForm);
                 $addressRecord->save();
             }
