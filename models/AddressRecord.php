@@ -24,6 +24,11 @@ class AddressRecord extends ActiveRecord
         return static::find()->asArray()->all();
     }
 
+    public static function getAddressNameById($id)
+    {
+        return static::findOne($id)->name;
+    }
+
     public function setNameForm($addressForm)
     {
         $this->name = $addressForm->name;
