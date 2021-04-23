@@ -13,6 +13,13 @@ class PlaceRecord extends ActiveRecord
     {
         return "place";
     }
+
+
+
+
+
+
+
     public function getIdAddress()
     {
         return $this->hasOne(AddressRecord::class, ['id'=>'id_address']);

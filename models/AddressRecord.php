@@ -13,10 +13,24 @@ class AddressRecord extends ActiveRecord
     {
         return "address";
     }
+
+    public static function existName($name)
+    {
+        return static::find()->where(['email'=>$name])->count() > 0;
+    }
+
+    public function setNameForm($addressForm)
+    {
+        $this->name = $addressForm->name;
+    }
+
+
+
     public function getPlases()
     {
         return $this->hasMany(PlaceRecord::class, ['id_address'=>'id']);
     }
+
 }
 
 
