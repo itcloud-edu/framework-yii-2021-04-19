@@ -30,7 +30,7 @@ class UserLoginForm extends Model{
         if ($this->hasErrors()) // проверка на предыдущие ошибки
             return;
 
-        if ($this->userRecord->passhash != $this->password)
+        if (!$this->userRecord->validatePassword($this->password))
             $this->addError('password', 'Неверный пароль');
     }
 

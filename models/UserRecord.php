@@ -27,6 +27,14 @@ class UserRecord extends ActiveRecord{
     public function setUserJoinForm($userJoinForm){
         $this->name = $userJoinForm->name;
         $this->email = $userJoinForm->email;
-        $this->passhash = $userJoinForm->password;
+        $this->setPassword($userJoinForm->password);
+    }
+
+    public function setPassword($password){
+        $this->passhash = \Yii::$app->security->generatePasswordHash($password);
+    }
+
+    public function validatePassword($password){
+        return \Yii::$app->security->validatePassword($password, $this->passhash);
     }
 }
