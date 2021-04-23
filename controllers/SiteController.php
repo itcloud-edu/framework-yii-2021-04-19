@@ -15,4 +15,9 @@ class SiteController extends Controller
         return $this -> render('about');
     }
 
+    public function actionsAddress()
+    {
+        return $this -> render('address', compact('addressForm'));
+
+    }
 }

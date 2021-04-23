@@ -2,6 +2,7 @@
 
 namespace app\models;
 use yii\db\ActiveRecord;
+use app\models\PlaceRecord;
 
 class AddressRecord extends ActiveRecord
 {
@@ -11,6 +12,6 @@ class AddressRecord extends ActiveRecord
     }
     public function getPlace()
     {
-        return $this->hasMany(PlaceRecord::className(), ['id'=>'id_address']);
+        return $this->hasMany(PlaceRecord::class, ['id'=>'id_address']);
     }
 }

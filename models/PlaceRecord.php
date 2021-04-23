@@ -2,6 +2,7 @@
 
 namespace app\models;
 use yii\db\ActiveRecord;
+use app\models\AddressRecord;
 
 class PlaceRecord extends ActiveRecord
 {
@@ -11,6 +12,6 @@ class PlaceRecord extends ActiveRecord
     }
     public function getIdAddress()
     {
-        return $this->hasOne(AddressRecord::className(), ['id'=>'id_address']);
+        return $this->hasOne(AddressRecord::class, ['id'=>'id_address']);
     }
 }
