@@ -21,8 +21,18 @@ class m210423_052348_place extends Migration
             'name' => $this->string()->notNull(),
             'organization' => $this->string(),
             'supervisor' => $this->string(),
-            'address' => $this->integer()
+            'id_address' => $this->integer()
         ]);
+
+        $this->addForeignKey(
+            'place_to_address',
+            'place',
+            'id_address',
+            'address',
+            'id',
+            'CASCADE'
+        );
+
 
     }
 
