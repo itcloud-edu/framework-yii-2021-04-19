@@ -20,7 +20,3 @@ use yii\bootstrap4\ActiveForm;
         ?>
     </div>
 </div>
-<script type="text/javascript">
-
-
-</script>

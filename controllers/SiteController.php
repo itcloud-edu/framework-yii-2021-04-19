@@ -28,7 +28,7 @@ class SiteController extends Controller
             $addressForm->name = AddressRecord::findOne(Yii::$app->request->get('id'))->name;
         elseif (Yii::$app->request->get('action') == 'delete'){
             AddressRecord::findOne(Yii::$app->request->get('id'))->delete();
-                return $this->redirect('/site/address');
+            return $this->redirect('/site/address');
         }
 
         $addressList = AddressRecord::getAddressList();

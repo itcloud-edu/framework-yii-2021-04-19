@@ -42,13 +42,3 @@ class AddressRecord extends ActiveRecord
     }
 
 }
-
-
-
-
-
-
-
-
-
-
