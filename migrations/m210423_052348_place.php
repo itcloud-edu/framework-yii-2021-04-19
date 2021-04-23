@@ -14,7 +14,7 @@ class m210423_052348_place extends Migration
     {
         $this->createTable('address', [
             'id' => $this->primaryKey(),
-            'name' => $this->string()->notNull()
+            'name' => $this->string()->unique()->notNull()
         ]);
         $this->createTable('place', [
             'id' => $this->primaryKey(),
