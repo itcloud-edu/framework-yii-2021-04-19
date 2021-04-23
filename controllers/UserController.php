@@ -54,7 +54,7 @@ class UserController extends Controller
         if($userLoginForm->load(Yii::$app->request->post()))
             if ($userLoginForm->validate()) {
                $userLoginForm->login();
-               // return $this->redirect('/');
+               return $this->redirect('/');
             }
         return $this->render('login', compact('userLoginForm'));
     }

@@ -1,6 +1,7 @@
 <?php
 namespace  app\models;
 use yii\db\ActiveRecord;
+use yii;
 
 class UserRecord extends  ActiveRecord{
 
@@ -8,6 +9,7 @@ class UserRecord extends  ActiveRecord{
     {
         return 'user';
     }
+
     public function setTestUser(){
         $faker = \Faker\Factory::create();
         $this->name  = $faker->name;
@@ -21,11 +23,17 @@ class UserRecord extends  ActiveRecord{
         return  static::findOne(['email'=> $email]);
     }
     public function setUserJoinForm($userJoinForm){
-        $this->name = $userJoinForm->name;
-        $this->email = $userJoinForm->email;
-        $this->passhash = $userJoinForm->password;
-        $this->status = 1;
+        $this->name     = $userJoinForm->name;
+        $this->email    = $userJoinForm->email;
+        $this->setPassword($userJoinForm->password);
+        $this->status   = 1;
 
+    }
+    public function setPassword($password){
+        $this->passhash = Yii::$app->security->generatePasswordHash($password, 5);
+    }
+    public function validatePassword($password){
+        return Yii::$app->security->validatePassword($password, $this->passhash);
     }
 
 }

@@ -2,6 +2,7 @@
 namespace app\models;
 use yii\base\Model;
 use yii;
+
 class UserLoginForm extends Model{
     private $userRecord;
     public $email;
@@ -35,7 +36,7 @@ class UserLoginForm extends Model{
     public function errorIsPasswordWrong(){
         if($this->hasErrors())
             return;
-        if($this->userRecord->passhash != $this->password)
+        if(!$this->userRecord->validatePassword($this->password))
             $this->addError('password', 'This password is  wrong');
     }
 }
