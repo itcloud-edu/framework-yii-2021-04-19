@@ -10,21 +10,20 @@ return [
             'enablePrettyUrl'=> true,
             'showScriptName' => false
         ],
-        'request' => [
-            'cookieValidationKey' => '123'
+        'request'=> [
+            'cookieValidationKey'=>'FKSJFKSFJSLKFJLSDKFJSDLKJFSLDK'
         ],
-        'db' => require(__DIR__ . '/db.php'),
-        'user' => [
-            'identityClass' => 'app\models\UserIdentity'
+        'db'=> require (__DIR__ . '/db.php'),
+        'user'=>[
+            'identityClass'=>'app\models\UserIdentity'
         ]
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-
     'modules' => [
-        'debug' => "yii\debug\Module"
+        'debug'=> 'yii\debug\Module'
     ]
 
 ];

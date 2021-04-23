@@ -1,44 +1,45 @@
 <?php
+
 namespace app\models;
-use \yii\base\Model;
+use yii\base\Model;
 use yii;
 
-class UserLoginForm extends Model{
+class UserLoginForm extends Model {
+
     public $email;
     public $password;
     private $userRecord;
 
     public function rules()
     {
-        // определение обязательных к заполнению полей и проверок на корректность
         return [
             ['email', 'required'],
             ['password', 'required'],
-            ['email', 'email', 'message' => 'Не верный E-Mail'],
-            ['email', 'errorIfEmailFound'], // функция проверки существования email, объявлена ниже
+            ['email', 'email'],
+            ['email', 'errorIFEmailNotFound'],
             ['password', 'errorIsPasswordWrong']
         ];
     }
 
-    public function errorIfEmailFound(){
+    public function errorIFEmailNotFound() {
         $this->userRecord = UserRecord::findUserByEmail($this->email);
-        if ($this->userRecord == null)
-            $this->addError('email', 'EMail не найден');
+        if ( $this->userRecord == null)
+            $this->addError('email', 'This mail not found');
     }
 
-    public function errorIsPasswordWrong(){
-        if ($this->hasErrors()) // проверка на предыдущие ошибки
+    public function errorIsPasswordWrong() {
+        if ($this->hasErrors())
             return;
-
         if (!$this->userRecord->validatePassword($this->password))
-            $this->addError('password', 'Неверный пароль');
+            $this->addError('password', 'This password is wrong');
     }
 
-    public function Login(){
+    public function login()
+    {
         if ($this->hasErrors())
             return;
         $userIdentity = UserIdentity::findIdentity($this->userRecord->id);
         Yii::$app->user->login($userIdentity);
-    }
 
+    }
 }

@@ -1,88 +1,69 @@
 <?php
 
 namespace app\controllers;
-use app\models\UserLoginForm;
 use app\models\UserJoinForm;
+use app\models\UserLoginForm;
 use yii;
 use app\models\UserIdentity;
 use app\models\UserRecord;
-use yii\base\BaseObject;
 use yii\web\Controller;
 
 class UserController extends Controller
 {
     public function actionLogin()
     {
-        //$uid = UserIdentity::findIdentity(1);
-        //Yii::$app->user->login($uid);
+        if (Yii::$app->request->isPost)
+            return $this->actionLoginPost();
+        $userLoginForm = new  UserLoginForm();
 
-        if (Yii::$app->request->isPost) return $this->actionLoginPost();
+        return $this -> render('login' ,  compact('userLoginForm'));
+    }
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+        return $this -> redirect('/');
+    }
 
+    private function actionLoginPost()
+    {
         $userLoginForm = new UserLoginForm();
-
-        return $this -> render('login', compact('userLoginForm'));
-
+        if ($userLoginForm->load(Yii::$app->request->post()))
+            if ($userLoginForm->validate()) {
+                $userLoginForm->login();
+                return $this->redirect('/');
+            }
+        return $this -> render('login' ,  compact('userLoginForm'));
     }
 
-    public function actionLogout(){
-        Yii::$app->user->logout($uid);
-        return $this->redirect('/');
-    }
+
+
+
 
     public function actionJoin()
     {
-        //$userRec = new UserRecord();
-        //$userRec->setTestUser();
-        //$userRec->save();
-
-        // нажали Commit и возвращается сюда
-        // чтобы перерисовки ниже не было проверяем запрос Post
-        if (Yii::$app->request->isPost) return $this->actionJoinPost();
+        if (Yii::$app->request->isPost)
+            return $this->actionJoinPost();
 
         $userJoinForm = new UserJoinForm();
         $userRecord = new UserRecord();
         $userRecord->setTestUser();
-
         $userJoinForm->setUserRecord($userRecord);
 
-        //$userJoinForm->name = 'Join'; // автозаполнение
-        return $this -> render('join',
-        [
-            'userJoinForm' => $userJoinForm
-        ]);
-        //return $this -> render('join', compact('userJoinForm')); //другой способ
-
+        return $this -> render('join', compact('userJoinForm'));
     }
 
-    public function actionInfo()
+    public function actionJoinPost()
     {
-        return $this -> render('info');
-    }
-
-    public function actionJoinPost(){
         $userJoinForm = new UserJoinForm();
         if ($userJoinForm->load(Yii::$app->request->post()))
-            if ($userJoinForm->validate()){
+            if ($userJoinForm->validate()) {
                 $userRecord = new UserRecord();
                 $userRecord->setUserJoinForm($userJoinForm);
                 $userRecord->save();
-                return $this->redirect('/user/login');
+                return $this -> redirect('/user/login');
             }
-
-        return $this -> render('join', compact('userJoinForm')); //другой способ
+        return $this -> render('join', compact('userJoinForm'));
     }
 
-    public function actionLoginPost(){
-        $userLoginForm = new UserLoginForm();
-        if ($userLoginForm->load(Yii::$app->request->post()))
-            if ($userLoginForm->validate()){
-                $userLoginForm->Login();
-                return $this->redirect('/');
-            }
 
-        return $this -> render('login', compact('userLoginForm'));
-
-    }
 }
-
-
